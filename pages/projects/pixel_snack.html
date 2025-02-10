@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio personnel</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/61d2b3ef85.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="container">
+        <a class="logo" href="../../index.html">
+            <svg width="40" height="23" viewBox="0 0 40 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.74 22.27C8.78 22.27 8.13 21.83 7.79 20.95L0.14 1.12C0.34 1.02 0.61 0.929999 0.95 0.849999C1.29 0.769999 1.59 0.729998 1.85 0.729998C3.43 0.729998 4.45 1.37 4.91 2.65L9.53 15.58L8.81 17.5L9.14 17.62L14.54 2.65C15.02 1.37 16.04 0.729998 17.6 0.729998C17.86 0.729998 18.16 0.769999 18.5 0.849999C18.84 0.929999 19.12 1.02 19.34 1.12L11.69 20.95C11.53 21.37 11.28 21.7 10.94 21.94C10.62 22.16 10.22 22.27 9.74 22.27ZM30.9936 22.27C29.2136 22.27 27.6236 21.93 26.2236 21.25C24.8436 20.57 23.7636 19.62 22.9836 18.4C22.2036 17.18 21.8136 15.79 21.8136 14.23V8.71C21.8136 7.15 22.1936 5.77 22.9536 4.57C23.7336 3.35 24.8036 2.41 26.1636 1.75C27.5236 1.07 29.0836 0.729998 30.8436 0.729998C32.6036 0.729998 34.1636 0.999999 35.5236 1.54C36.9036 2.06 37.9736 2.79 38.7336 3.73C39.4936 4.67 39.8736 5.75 39.8736 6.97C39.8736 7.71 39.6236 8.29 39.1236 8.71C38.6436 9.13 37.9936 9.34 37.1736 9.34C36.7736 9.34 36.3336 9.28 35.8536 9.16C35.8936 8.68 35.9136 8.21 35.9136 7.75C35.9136 6.69 35.4436 5.83 34.5036 5.17C33.5636 4.51 32.3436 4.18 30.8436 4.18C29.3636 4.18 28.1536 4.6 27.2136 5.44C26.2936 6.28 25.8336 7.37 25.8336 8.71V14.23C25.8336 15.57 26.3136 16.67 27.2736 17.53C28.2336 18.39 29.4736 18.82 30.9936 18.82C32.4736 18.82 33.6736 18.48 34.5936 17.8C35.5336 17.1 36.0036 16.2 36.0036 15.1V14.17H33.4236C32.6636 14.17 32.0436 13.88 31.5636 13.3C31.0836 12.7 30.8436 11.93 30.8436 10.99H38.1336C38.6936 10.99 39.1436 11.16 39.4836 11.5C39.8236 11.84 39.9936 12.29 39.9936 12.85V15.19C39.9936 16.57 39.6136 17.8 38.8536 18.88C38.0936 19.94 37.0236 20.77 35.6436 21.37C34.2836 21.97 32.7336 22.27 30.9936 22.27Z" fill="url(#paint0_linear_587_644)"/>
+                <defs>
+                <linearGradient id="paint0_linear_587_644" x1="-1" y1="9.87097" x2="42" y2="9.87097" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FA6E00"/>
+                <stop offset="1" stop-color="#E60026"/>
+                </linearGradient>
+                </defs>
+            </svg>
+        </a>
+        <nav>
+            <h2 id="menu">Menu</h2>
+            <ul>
+                <li><a href="../../index.html#about">A propos</a></li>
+                <li><a href="../../index.html#desciption">Compétences</a></li>
+                <li><a href="../projects.html">Projets</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a class="button" href="../../index.html#contact">Me contacter</a>
+    </header>
+
+    <div class="container unique_project" id="project">
+        <script>
+
+            $(document).ready(function () { 
+  
+                $.getJSON("../../projects.json",  
+                    function (data) { 
+                    
+                        let project = data[4]; 
+
+                        let technologiesHTML = '';
+                            project.technologies.forEach(technology => {
+                                technologiesHTML += `
+                                <div>
+                                    <img src="../../assets/technologies/${technology}.svg" width="20px" alt="${technology}">
+                                </div>`;        
+                        }); 
+
+                        let projectHTML =
+                        `
+                            <div id="image_project">
+                                <img src="${project.image}" alt="${project.title}">
+                            </div>
+                            <div id="text_project">
+                                <h3>${project.name}</h3>
+                                <p>${project.description}</p>
+                                <div class="technologies">
+                                    ${technologiesHTML}
+                                </div>
+                            </div>
+                        `;
+                            
+                        $('#project').append(projectHTML); 
+                }); 
+            }); 
+        </script>
+    
+    </div>
+
+
+    <footer class="container">
+        <div id="footer_nav">
+            <div class="logo">
+                <svg width="40" height="23" viewBox="0 0 40 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.74 22.27C8.78 22.27 8.13 21.83 7.79 20.95L0.14 1.12C0.34 1.02 0.61 0.929999 0.95 0.849999C1.29 0.769999 1.59 0.729998 1.85 0.729998C3.43 0.729998 4.45 1.37 4.91 2.65L9.53 15.58L8.81 17.5L9.14 17.62L14.54 2.65C15.02 1.37 16.04 0.729998 17.6 0.729998C17.86 0.729998 18.16 0.769999 18.5 0.849999C18.84 0.929999 19.12 1.02 19.34 1.12L11.69 20.95C11.53 21.37 11.28 21.7 10.94 21.94C10.62 22.16 10.22 22.27 9.74 22.27ZM30.9936 22.27C29.2136 22.27 27.6236 21.93 26.2236 21.25C24.8436 20.57 23.7636 19.62 22.9836 18.4C22.2036 17.18 21.8136 15.79 21.8136 14.23V8.71C21.8136 7.15 22.1936 5.77 22.9536 4.57C23.7336 3.35 24.8036 2.41 26.1636 1.75C27.5236 1.07 29.0836 0.729998 30.8436 0.729998C32.6036 0.729998 34.1636 0.999999 35.5236 1.54C36.9036 2.06 37.9736 2.79 38.7336 3.73C39.4936 4.67 39.8736 5.75 39.8736 6.97C39.8736 7.71 39.6236 8.29 39.1236 8.71C38.6436 9.13 37.9936 9.34 37.1736 9.34C36.7736 9.34 36.3336 9.28 35.8536 9.16C35.8936 8.68 35.9136 8.21 35.9136 7.75C35.9136 6.69 35.4436 5.83 34.5036 5.17C33.5636 4.51 32.3436 4.18 30.8436 4.18C29.3636 4.18 28.1536 4.6 27.2136 5.44C26.2936 6.28 25.8336 7.37 25.8336 8.71V14.23C25.8336 15.57 26.3136 16.67 27.2736 17.53C28.2336 18.39 29.4736 18.82 30.9936 18.82C32.4736 18.82 33.6736 18.48 34.5936 17.8C35.5336 17.1 36.0036 16.2 36.0036 15.1V14.17H33.4236C32.6636 14.17 32.0436 13.88 31.5636 13.3C31.0836 12.7 30.8436 11.93 30.8436 10.99H38.1336C38.6936 10.99 39.1436 11.16 39.4836 11.5C39.8236 11.84 39.9936 12.29 39.9936 12.85V15.19C39.9936 16.57 39.6136 17.8 38.8536 18.88C38.0936 19.94 37.0236 20.77 35.6436 21.37C34.2836 21.97 32.7336 22.27 30.9936 22.27Z" fill="url(#paint0_linear_587_644)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_587_644" x1="-1" y1="9.87097" x2="42" y2="9.87097" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FA6E00"/>
+                    <stop offset="1" stop-color="#E60026"/>
+                    </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div id="nav_links">     
+                <a href="#">Acceuil</a>       
+                <a href="./pages/projects.html">Mes projets</a>       
+            </div>
+        </div>
+        <div id="links_contact">
+            <div class="links">
+                <div id="social">
+                    <a href="https://www.linkedin.com/in/vincent-gillet-01413127a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>            
+            <div id="contact">
+                <a class="contact" href="tel:0612345678">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>06 12 34 56 78</p>
+                </a>
+                <a class="contact" href="mailto:votreadresse@mail.fr">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>mail@gmail.com</p>
+                </a>            
+            </div>
+        </div>
+
+        <div id="legal">
+            <p>© 2025 • Tous Droits Réservés • Mentions légales • Développé par Vincent </p>
+        </div>
+    </footer>
+</body>
+</html>
+
